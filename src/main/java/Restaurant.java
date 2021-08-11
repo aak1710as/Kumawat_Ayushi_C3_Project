@@ -69,4 +69,11 @@ public class Restaurant {
         return name;
     }
 
+    public int getTotalPrice(List<String> items){
+        return menu.stream()
+          .filter(item -> items.contains(item.getName()))
+          .reduce(0, (subtotal, item) -> subtotal + item.getPrice(), Integer::sum);
+    }
+
+
 }
